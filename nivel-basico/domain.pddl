@@ -1,6 +1,6 @@
 (define (domain DOMAIN_NIVELBASICO)
     (:requirements :strips :typing :adl)
-    (:objects
+    (:types
         contenido dia - object
     )
     (:predicates
