@@ -1,23 +1,32 @@
+package problem_generator;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-//import javafx.util.Pair;
 
-public class RandomPDDLGenerator {
+public class problem_generator {
+
+    private static boolean[] tiene_predecesor; // si el contenido i tiene un predecesor
+    private static boolean[] se_ha_de_ver; // si el contenido i se ha de ver
 
     private static Random random = new Random();
 
     public static void main(String[] args) {
-
         int minDias = 1;
         int maxDias = 0;
         while (maxDias < minDias) {
-            System.out.println("Elija el numero minimo y maximo de dias\n" + "minimo: ");
-            minDias = Integer.parseInt(System.console().readLine());
-            System.out.println("maximo: ");
-            maxDias = Integer.parseInt(System.console().readLine());
+            try {
+                System.out.println("Elija el numero minimo y maximo de dias\n" + "minimo: ");
+                minDias = Integer.parseInt(System.console().readLine());
+                System.out.println("maximo: ");
+                maxDias = Integer.parseInt(System.console().readLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, introduzca un numero valido");
+                minDias = 1;
+                maxDias = 0;
+            }
 
             if(maxDias < minDias){
                 System.out.println("El numero maximo de dias no puede ser menor que el minimo");
@@ -27,14 +36,23 @@ public class RandomPDDLGenerator {
         //hacemos lo mismo pero con los contenidos
         int minContenidos = 1;
         int maxContenidos = 0;
-        while (maxContenidos < minContenidos) {
-            System.out.println("Elija el numero minimo y maximo de contenidos\n" + "minimo: ");
-            minContenidos = Integer.parseInt(System.console().readLine());
-            System.out.println("maximo: ");
-            maxContenidos = Integer.parseInt(System.console().readLine());
+        while (maxContenidos < minContenidos || minContenidos < minDias) {
+            try {
+                System.out.println("Elija el numero minimo y maximo de contenidos\n" + "minimo: ");
+                minContenidos = Integer.parseInt(System.console().readLine());
+                System.out.println("maximo: ");
+                maxContenidos = Integer.parseInt(System.console().readLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, introduzca un numero valido");
+                minContenidos = 1;
+                maxContenidos = 0;
+            }
 
             if(maxContenidos < minContenidos){
                 System.out.println("El numero maximo de contenidos no puede ser menor que el minimo");
+            }
+            else if (minContenidos < minDias){
+                System.out.println("El numero minimo de contenidos no puede ser menor que el numero minimo de dias");
             }
         }
         //Pair<Integer, Integer> dia = new Pair<>(minDias, maxDias);
@@ -45,6 +63,15 @@ public class RandomPDDLGenerator {
     public static void generarPDDL(String filename, int minDia, int maxDia, int minContenido, int maxContenido) {
         int numDays = random.ints(minDia, maxDia + 1).findFirst().getAsInt();
         int numContents = random.ints(minContenido, maxContenido + 1).findFirst().getAsInt();
+
+        tiene_predecesor = new boolean[numContents];
+        se_ha_de_ver = new boolean[numContents];
+        for(int i = 0; i < numContents; i++){
+            tiene_predecesor[i] = false;
+        }
+        for(int i = 0; i < numContents; i++){
+            se_ha_de_ver[i] = false;
+        }
 
         List<String> contents = generateRandomStrings(numContents, "Content");
         List<String> days = generateRandomStrings(numDays, "Day");
@@ -61,16 +88,22 @@ public class RandomPDDLGenerator {
             }
             file.write("    )\n");
             file.write("    (:init\n");
-            for (String content : contents) {
+
+            for (int i = 0; i < numContents; i++) {
+                String content = contents.get(i);
                 if (random.nextBoolean()) {
                     file.write("        (tienequever " + content + ")\n");
+                    se_ha_de_ver[i] = true;
                 }
             }
+
             for (int i = 0; i < numContents - 1; i++) {
-                if (random.nextBoolean()) {
+                if (random.nextBoolean() && !tiene_predecesor[i+1]) {
                     file.write("        (predecesor " + contents.get(i) + " " + contents.get(i + 1) + ")\n");
+                    tiene_predecesor[i+1] = true;
                 }
             }
+
             for (String content : contents) {
                 file.write("        (not (havisto " + content + "))\n");
                 file.write("        (not (agendado " + content + "))\n");
@@ -78,16 +111,22 @@ public class RandomPDDLGenerator {
             for (String day : days) {
                 file.write("        (not (lleno " + day + "))\n");
             }
-            for (String content : contents) {
-                if (random.nextBoolean()) {
-                    file.write("        (not (predecesoresAgendados " + content + "))\n");
+            for (int i = 0; i < numContents; i++) {
+                String content = contents.get(i);
+                if (!tiene_predecesor[i]) {
+                    file.write("        (libredepredecesores " + content + ")\n");
+                }
+                else {
+                    file.write("        (not (libredepredecesores " + content + "))\n");
                 }
             }
             file.write("    )\n");
             file.write("    (:goal\n");
             file.write("        (and\n");
-            for (String content : contents) {
-                file.write("            (agendado " + content + ")\n");
+            for (int i = 0; i < numContents; i++) {
+                String content = contents.get(i);
+                if(se_ha_de_ver[i]) file.write("            (agendado " + content + ")\n");
+                //else file.write("            (not (agendado " + content + "))\n");
             }
             file.write("        )\n");
             file.write("    )\n");
