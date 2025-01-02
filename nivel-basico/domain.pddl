@@ -6,9 +6,9 @@
     (:predicates
         (havisto ?c - contenido)                        ; Es un contenido que el usuario ha visto
         (tienequever ?c - contenido)                    ; Es un contenido pendiente por agendar. Ya sea porque el usuario queire verlo o porque pertenece a una cadena de predecesores.
-        (predecesor ?c1 - contenido ?c2 -  contenido)   ; El contenido c1 es predecesor al contenido c2
         (lleno ?d)                                      ; El dia d ya ha sido llenado con contenidos
         (agendado ?c - contenido)                       ; El contenido c ha sido agendado
+        (predecesor ?c1 - contenido ?c2 -  contenido)   ; El contenido c1 es predecesor al contenido c2
         (libredepredecesores ?c - contenido)            ; El contenido c no tiene predecesores o todos los predecesores de c han sido agendados
     )
     (:action reiniciardias
