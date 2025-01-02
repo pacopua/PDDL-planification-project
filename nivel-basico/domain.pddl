@@ -9,7 +9,7 @@
         (predecesor ?c1 - contenido ?c2 -  contenido)   ; El contenido c1 es predecesor al contenido c2
         (lleno ?d)                                      ; El dia d ya ha sido llenado con contenidos
         (agendado ?c - contenido)                       ; El contenido c ha sido agendado
-        (predecesoresAgendados ?c - contenido)          ; Todos los predecesores de c han sido agendados
+        (libredepredecesores ?c - contenido)            ; El contenido c no tiene predecesores o todos los predecesores de c han sido agendados
     )
     (:action reiniciardias
         :precondition
@@ -36,7 +36,7 @@
             )
         :effect
             (and 
-                (not (predecesoresAgendados ?c2))
+                (not (libredepredecesores ?c2))
                 (tienequever ?c1)
             )
     )
@@ -49,7 +49,7 @@
             (and
                 (not (agendado ?c))
                 (not (lleno ?d))
-                (predecesoresAgendados ?c)
+                (libredepredecesores ?c)
                 (tienequever ?c)
             )
         :effect
@@ -62,7 +62,7 @@
                 (forall (?c2 - contenido)
                     (when
                         (predecesor ?c ?c2)
-                        (predecesoresAgendados ?c2)
+                        (libredepredecesores ?c2)
                     )
                 )
             )

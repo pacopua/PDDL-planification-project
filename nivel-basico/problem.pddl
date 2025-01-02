@@ -37,9 +37,14 @@
         (not (lleno sabado))
         (not (lleno domingo))
 
-        ; Predecesores no agendados
-        (not (predecesoresAgendados CapitanaMarvel))
-        (not (predecesoresAgendados ElSenorDeLosAnillos_AnillosDePoder))
+        ; Contenidos que no tienen predecesores
+        (libredepredecesores CapitanAmerica_ElPrimerVengador)
+        (libredepredecesores SuperMarioBros)
+        (libredepredecesores ElSenorDeLosAnillos_LaGuerraDeLosRohirrim)
+
+        ; Contenidos que tienen algun predecesor
+        (not (libredepredecesores CapitanaMarvel))
+        (not (libredepredecesores ElSenorDeLosAnillos_AnillosDePoder))
     )
     (:goal
         (and
