@@ -16,43 +16,89 @@ public class problem_generator {
     public static void main(String[] args) {
         int minDias = 1;
         int maxDias = 0;
-        while (maxDias < minDias) {
-            try {
-                System.out.println("Elija el numero minimo y maximo de dias\n" + "minimo: ");
-                minDias = Integer.parseInt(System.console().readLine());
-                System.out.println("maximo: ");
-                maxDias = Integer.parseInt(System.console().readLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Por favor, introduzca un numero valido");
-                minDias = 1;
-                maxDias = 0;
-            }
-
-            if(maxDias < minDias){
-                System.out.println("El numero maximo de dias no puede ser menor que el minimo");
-            }
-        }
-
-        //hacemos lo mismo pero con los contenidos
         int minContenidos = 1;
         int maxContenidos = 0;
-        while (maxContenidos < minContenidos || minContenidos < minDias) {
-            try {
-                System.out.println("Elija el numero minimo y maximo de contenidos\n" + "minimo: ");
-                minContenidos = Integer.parseInt(System.console().readLine());
-                System.out.println("maximo: ");
-                maxContenidos = Integer.parseInt(System.console().readLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Por favor, introduzca un numero valido");
-                minContenidos = 1;
-                maxContenidos = 0;
+        System.out.println("Desea que pueda haber mas de un contenido por dia?\n Si/No");
+        String respuesta = System.console().readLine();
+        while (!respuesta.equals("Si") && !respuesta.equals("No")) {
+            System.out.println("Por favor, introduzca una respuesta valida");
+            respuesta = System.console().readLine();
+        }
+        if (respuesta.equals("No")) {
+            while (maxDias < minDias) {
+                try {
+                    System.out.println("Elija el numero minimo y maximo de dias\n" + "minimo: ");
+                    minDias = Integer.parseInt(System.console().readLine());
+                    System.out.println("maximo: ");
+                    maxDias = Integer.parseInt(System.console().readLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor, introduzca un numero valido");
+                    minDias = 1;
+                    maxDias = 0;
+                }
+
+                if (maxDias < minDias) {
+                    System.out.println("El numero maximo de dias no puede ser menor que el minimo");
+                }
             }
 
-            if(maxContenidos < minContenidos){
-                System.out.println("El numero maximo de contenidos no puede ser menor que el minimo");
+            //hacemos lo mismo pero con los contenidos
+            while (maxContenidos < minContenidos || minContenidos < minDias) {
+                try {
+                    System.out.println("Elija el numero minimo y maximo de contenidos\n" + "minimo: ");
+                    minContenidos = Integer.parseInt(System.console().readLine());
+                    System.out.println("maximo: ");
+                    maxContenidos = Integer.parseInt(System.console().readLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor, introduzca un numero valido");
+                    minContenidos = 1;
+                    maxContenidos = 0;
+                }
+
+                if (maxContenidos < minContenidos) {
+                    System.out.println("El numero maximo de contenidos no puede ser menor que el minimo");
+                } else if (minContenidos < minDias) {
+                    System.out.println("El numero minimo de contenidos no puede ser menor que el numero minimo de dias");
+                }
             }
-            else if (minContenidos < minDias){
-                System.out.println("El numero minimo de contenidos no puede ser menor que el numero minimo de dias");
+        }
+        else {
+            boolean repetir = true;
+            while (repetir) {
+                try {
+                    System.out.println("Elija el numero minimo y maximo de dias\n" + "minimo: ");
+                    minDias = Integer.parseInt(System.console().readLine());
+                    System.out.println("maximo: ");
+                    maxDias = Integer.parseInt(System.console().readLine());
+                    repetir = false;
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor, introduzca un numero valido");
+                    //repetir = true;
+                }
+
+                if (maxDias < minDias) {
+                    System.out.println("El numero maximo de dias no puede ser menor que el minimo");
+                }
+            }
+
+            //hacemos lo mismo pero con los contenidos
+            repetir = true;
+            while (repetir) {
+                try {
+                    System.out.println("Elija el numero minimo y maximo de contenidos\n" + "minimo: ");
+                    minContenidos = Integer.parseInt(System.console().readLine());
+                    System.out.println("maximo: ");
+                    maxContenidos = Integer.parseInt(System.console().readLine());
+                    repetir = false;
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor, introduzca un numero valido");
+                }
+
+                if (maxContenidos < minContenidos) {
+                    System.out.println("El numero maximo de contenidos no puede ser menor que el minimo");
+                } else if (minContenidos < minDias) {
+                    System.out.println("El numero minimo de contenidos no puede ser menor que el numero minimo de dias");
+                }
             }
         }
         //Pair<Integer, Integer> dia = new Pair<>(minDias, maxDias);
@@ -98,7 +144,7 @@ public class problem_generator {
             }
 
             for (int i = 0; i < numContents - 1; i++) {
-                if (random.nextBoolean() && !tiene_predecesor[i+1]) {
+                if (random.nextBoolean() && !tiene_predecesor[i]) {
                     file.write("        (predecesor " + contents.get(i) + " " + contents.get(i + 1) + ")\n");
                     tiene_predecesor[i+1] = true;
                 }
