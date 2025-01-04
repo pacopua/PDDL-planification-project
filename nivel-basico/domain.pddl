@@ -1,44 +1,45 @@
 (define (domain DOMAIN_NIVELBASICO)
-    (:requirements :strips :typing :adl)
+    (:requirements :typing :adl :fluents)
     (:types
         contenido dia - object
     )
     (:predicates
-        (havisto ?c - contenido)                        ; Es un contenido que el usuario ha visto
-        (tienequever ?c - contenido)                    ; Es un contenido pendiente por agendar. Ya sea porque el usuario queire verlo o porque pertenece a una cadena de predecesores.
-        (lleno ?d)                                      ; El dia d ya ha sido llenado con contenidos
-        (agendado ?c - contenido)                       ; El contenido c ha sido agendado
+        (haVisto ?c - contenido)                        ; Es un contenido que el usuario ha visto
+        (quiereVer ?c - contenido)                      ; Es un contenido que el usuario quiere ver
         (predecesor ?c1 - contenido ?c2 -  contenido)   ; El contenido c1 es predecesor al contenido c2
-        (libredepredecesores ?c - contenido)            ; El contenido c no tiene predecesores o todos los predecesores de c han sido agendados
+        (necesarioAgendar ?c - contenido)               ; Es un contenido pendiente por agendar. Ya sea porque el usuario queire verlo o porque pertenece a una cadena de predecesores.
+        (agendado ?c - contenido ?d - dia)              ; El contenido c ha sido agendado al dia d
     )
-    (:action reiniciardias
-        :precondition
-            (forall (?d - dia)
-                (lleno ?d)
-            )
-        :effect
-            (forall (?d - dia)
-                (not (lleno ?d))
-            )
+    (:functions
+        (orden ?d - dia)
+        (contenidosAgendados ?d - dia)
+        (maxContenidosPorDia)
     )
     (:action requerimiento
         :parameters (
-            ?c1 - contenido
-            ?c2 - contenido
+            ?c - contenido
         )
         :precondition
             (and
-                (predecesor ?c1 ?c2)
-                (tienequever ?c2)
-                (not (agendado ?c1))
-                (not (havisto ?c1))
-                (not (tienequever ?c1))
+                (not (necesarioAgendar ?c))
+                (not (haVisto ?c))
+                (not 
+                    (exists (?d - dia)
+                        (agendado ?c ?d)
+                    )
+                )
+                (or
+                    (quiereVer ?c)
+                    (exists (?c2 - contenido)
+                        (and
+                            (predecesor ?c ?c2)
+                            (necesarioAgendar ?c2)
+                        )
+                    )
+                )
             )
         :effect
-            (and 
-                (not (libredepredecesores ?c2))
-                (tienequever ?c1)
-            )
+            (necesarioAgendar ?c)
     )
     (:action agendar
         :parameters (
@@ -47,23 +48,37 @@
         )
         :precondition 
             (and
-                (not (agendado ?c))
-                (not (lleno ?d))
-                (libredepredecesores ?c)
-                (tienequever ?c)
+                (necesarioAgendar ?c)
+                (<
+                    (contenidosAgendados ?d)
+                    (maxContenidosPorDia)
+                )
+                ; Todos sus predecesores o bien han sido vistos o bien han sido asignados en el mismo dia o anteriores
+                (forall (?c2 - contenido)
+                    (imply
+                        (predecesor ?c2 ?c)
+                        (or
+                            (haVisto ?c2)
+                            (exists (?d2 - dia)
+                                (and
+                                    (<=
+                                        (orden ?d2)
+                                        (orden ?d)
+                                    )
+                                    (agendado ?c2 ?d2)
+                                )
+                            )
+                        )
+                    )
+                )
             )
         :effect
             (and
-                (not (tienequever ?c))
-                (agendado ?c)
-                (lleno ?d)
-
-                ; Valido porque hay maximo un predecesor por contenido
-                (forall (?c2 - contenido)
-                    (when
-                        (predecesor ?c ?c2)
-                        (libredepredecesores ?c2)
-                    )
+                (not (necesarioAgendar ?c))
+                (agendado ?c ?d)
+                (increase
+                    (contenidosAgendados ?d)
+                    1
                 )
             )
     )

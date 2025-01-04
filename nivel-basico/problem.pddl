@@ -6,54 +6,43 @@
     )
     (:init
         ; Peliculas que el usuario quiere ver
-        (tienequever CapitanaMarvel)
-        (tienequever SuperMarioBros)
-        (tienequever ElSenorDeLosAnillos_AnillosDePoder)
+        (quiereVer CapitanaMarvel)
+        (quiereVer SuperMarioBros)
+        (quiereVer ElSenorDeLosAnillos_AnillosDePoder)
 
         ; Predecesores de las peliculas
         (predecesor CapitanAmerica_ElPrimerVengador CapitanaMarvel)
         (predecesor ElSenorDeLosAnillos_LaGuerraDeLosRohirrim ElSenorDeLosAnillos_AnillosDePoder)
         
-        ; Estado inicial: ninguno ha sido visto ni agendado
-        (not (havisto CapitanAmerica_ElPrimerVengador))
-        (not (havisto CapitanaMarvel))
-        (not (havisto SuperMarioBros))
-        (not (havisto ElSenorDeLosAnillos_LaGuerraDeLosRohirrim))
-        (not (havisto ElSenorDeLosAnillos_AnillosDePoder))
+        ; Ningun contenido ha sido visto (por defecto los predicados son falsos)
 
-        ; Ninguna pelicula ha sido agendada
-        (not (agendado CapitanAmerica_ElPrimerVengador))
-        (not (agendado CapitanaMarvel))
-        (not (agendado SuperMarioBros))
-        (not (agendado ElSenorDeLosAnillos_LaGuerraDeLosRohirrim))
-        (not (agendado ElSenorDeLosAnillos_AnillosDePoder))
+        (= (contenidosAgendados lunes) 0)
+        (= (contenidosAgendados martes) 0)
+        (= (contenidosAgendados miercoles) 0)
+        (= (contenidosAgendados jueves) 0)
+        (= (contenidosAgendados viernes) 0)
+        (= (contenidosAgendados sabado) 0)
+        (= (contenidosAgendados domingo) 0)
 
-        ; Ningun dia ha sido llenado
-        (not (lleno lunes))
-        (not (lleno martes))
-        (not (lleno miercoles))
-        (not (lleno jueves))
-        (not (lleno viernes))
-        (not (lleno sabado))
-        (not (lleno domingo))
+        (= (orden lunes) 1)
+        (= (orden martes) 2)
+        (= (orden miercoles) 3)
+        (= (orden jueves) 4)
+        (= (orden viernes) 5)
+        (= (orden sabado) 6)
+        (= (orden domingo) 7)
 
-        ; Contenidos que no tienen predecesores
-        (libredepredecesores CapitanAmerica_ElPrimerVengador)
-        (libredepredecesores SuperMarioBros)
-        (libredepredecesores ElSenorDeLosAnillos_LaGuerraDeLosRohirrim)
+        (= (maxContenidosPorDia) 1)
 
-        ; Contenidos que tienen algun predecesor
-        (not (libredepredecesores CapitanaMarvel))
-        (not (libredepredecesores ElSenorDeLosAnillos_AnillosDePoder))
     )
     (:goal
-        (and
-            ; Todas las peliculas han sido agendadas
-            (agendado CapitanAmerica_ElPrimerVengador)
-            (agendado CapitanaMarvel)
-            (agendado SuperMarioBros)
-            (agendado ElSenorDeLosAnillos_LaGuerraDeLosRohirrim)
-            (agendado ElSenorDeLosAnillos_AnillosDePoder)
+        (forall (?c - contenido)
+            (imply
+                (quiereVer ?c)
+                (exists (?d - dia)
+                    (agendado ?c ?d)
+                )
+            )
         )
     )
 )

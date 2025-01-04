@@ -7,8 +7,18 @@ problem 'PROBLEMA_NIVELBASICO' defined
  ... done.
 
 
+no metric specified. plan length assumed.
 
-Cueing down from goal distance:    7 into depth [1]
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   11 into depth [1]
+                                  10            [1]
+                                   9            [1]
+                                   8            [1]
+                                   7            [1]
                                    6            [1]
                                    5            [1]
                                    4            [1]
@@ -19,19 +29,24 @@ Cueing down from goal distance:    7 into depth [1]
 
 ff: found legal plan as follows
 
-step    0: REQUERIMIENTO CAPITANAMERICA_ELPRIMERVENGADOR CAPITANAMARVEL
-        1: REQUERIMIENTO ELSENORDELOSANILLOS_LAGUERRADELOSROHIRRIM ELSENORDELOSANILLOS_ANILLOSDEPODER
-        2: AGENDAR CAPITANAMERICA_ELPRIMERVENGADOR LUNES
-        3: AGENDAR CAPITANAMARVEL MARTES
-        4: AGENDAR SUPERMARIOBROS MIERCOLES
-        5: AGENDAR ELSENORDELOSANILLOS_LAGUERRADELOSROHIRRIM JUEVES
-        6: AGENDAR ELSENORDELOSANILLOS_ANILLOSDEPODER VIERNES
+step    0: REQUERIMIENTO SUPERMARIOBROS
+        1: REQUERIMIENTO CAPITANAMARVEL
+        2: REQUERIMIENTO CAPITANAMERICA_ELPRIMERVENGADOR
+        3: AGENDAR CAPITANAMERICA_ELPRIMERVENGADOR LUNES
+        4: REQUERIMIENTO ELSENORDELOSANILLOS_ANILLOSDEPODER
+        5: REQUERIMIENTO ELSENORDELOSANILLOS_LAGUERRADELOSROHIRRIM
+        6: AGENDAR ELSENORDELOSANILLOS_LAGUERRADELOSROHIRRIM MARTES
+        7: AGENDAR CAPITANAMARVEL MIERCOLES
+        8: AGENDAR SUPERMARIOBROS JUEVES
+        9: AGENDAR ELSENORDELOSANILLOS_ANILLOSDEPODER VIERNES
+       10: REACH-GOAL
      
 
-time spent:    0.00 seconds instantiating 38 easy, 0 hard action templates
-               0.00 seconds reachability analysis, yielding 44 facts and 38 actions
-               0.00 seconds creating final representation with 36 relevant facts
+time spent:    0.00 seconds instantiating 0 easy, 82 hard action templates
+               0.00 seconds reachability analysis, yielding 80 facts and 425 actions
+               0.00 seconds creating final representation with 81 relevant facts, 14 relevant fluents
+               0.00 seconds computing LNF
                0.00 seconds building connectivity graph
-               0.00 seconds searching, evaluating 8 states, to a max depth of 1
+               0.00 seconds searching, evaluating 12 states, to a max depth of 1
                0.00 seconds total time
 
