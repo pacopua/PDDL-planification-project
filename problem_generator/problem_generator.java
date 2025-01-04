@@ -103,10 +103,11 @@ public class problem_generator {
         }
         //Pair<Integer, Integer> dia = new Pair<>(minDias, maxDias);
         //Pair<Integer, Integer> contenido = new Pair<>(minContenidos, maxContenidos);
-        generarPDDL("random_problem.pddl", minDias, maxDias, minContenidos, maxContenidos);
+        generarPDDL("nivel-basico/random_problem1.pddl", minDias, maxDias, minContenidos, maxContenidos);
     }
 
-    public static void generarPDDL(String filename, int minDia, int maxDia, int minContenido, int maxContenido) {
+    public static void
+    generarPDDL(String filename, int minDia, int maxDia, int minContenido, int maxContenido) {
         int numDays = random.ints(minDia, maxDia + 1).findFirst().getAsInt();
         int numContents = random.ints(minContenido, maxContenido + 1).findFirst().getAsInt();
 
@@ -138,7 +139,7 @@ public class problem_generator {
             for (int i = 0; i < numContents; i++) {
                 String content = contents.get(i);
                 if (random.nextBoolean()) {
-                    file.write("        (tienequever " + content + ")\n");
+                    file.write("        (quierever " + content + ")\n");
                     se_ha_de_ver[i] = true;
                 }
             }
@@ -152,31 +153,37 @@ public class problem_generator {
 
             for (String content : contents) {
                 file.write("        (not (havisto " + content + "))\n");
-                file.write("        (not (agendado " + content + "))\n");
             }
+            int z = 1;
             for (String day : days) {
-                file.write("        (not (lleno " + day + "))\n");
+                file.write("        (= (contenidosAgendados " + day + ") 0)\n");
+                file.write("        (= (orden " + day + ") " + z + ")\n");
+                ++z;
+                //"(= (contenidosAgendados lunes) 0)"
+                //file.write("        (not (lleno " + day + "))\n");
             }
-            for (int i = 0; i < numContents; i++) {
-                String content = contents.get(i);
-                if (!tiene_predecesor[i]) {
-                    file.write("        (libredepredecesores " + content + ")\n");
-                }
-                else {
-                    file.write("        (not (libredepredecesores " + content + "))\n");
-                }
-            }
-            file.write("    )\n");
-            file.write("    (:goal\n");
-            file.write("        (and\n");
-            for (int i = 0; i < numContents; i++) {
-                String content = contents.get(i);
-                if(se_ha_de_ver[i]) file.write("            (agendado " + content + ")\n");
-                //else file.write("            (not (agendado " + content + "))\n");
-            }
+            file.write("        (= (maxContenidosPorDia) 1)\n");
             file.write("        )\n");
-            file.write("    )\n");
-            file.write(")\n");
+            /*
+                (:goal
+                    (forall (?c - contenido)
+                    (imply
+                (quiereVer ?c)
+                (exists (?d - dia)
+                    (agendado ?c ?d)
+                )
+            )
+        )
+    )
+             */
+
+            file.write("    (:goal\n");
+            file.write("    (forall (?c - contenido)\n");
+            file.write("        (imply\n");
+            file.write("            (quiereVer ?c)\n");
+            file.write("            (exists (?d - dia)\n");
+            file.write("                (agendado ?c ?d))))))\n");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
