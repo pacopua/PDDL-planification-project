@@ -61,7 +61,7 @@
                             (haVisto ?c2)
                             (exists (?d2 - dia)
                                 (and
-                                    (<=
+                                    (<
                                         (orden ?d2)
                                         (orden ?d)
                                     )
