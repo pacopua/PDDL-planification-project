@@ -42,9 +42,9 @@ step    0: REQUERIMIENTO SUPERMARIOBROS
        10: REACH-GOAL
      
 
-time spent:    0.00 seconds instantiating 0 easy, 82 hard action templates
-               0.00 seconds reachability analysis, yielding 80 facts and 425 actions
-               0.00 seconds creating final representation with 81 relevant facts, 14 relevant fluents
+time spent:    0.00 seconds instantiating 0 easy, 68 hard action templates
+               0.00 seconds reachability analysis, yielding 78 facts and 320 actions
+               0.00 seconds creating final representation with 77 relevant facts, 14 relevant fluents
                0.00 seconds computing LNF
                0.00 seconds building connectivity graph
                0.00 seconds searching, evaluating 12 states, to a max depth of 1
