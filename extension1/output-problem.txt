@@ -41,22 +41,22 @@ step    0: REQUERIMIENTO LOS_JUEGOS_DEL_HAMBRE_SINSAJO_PARTE_1
         3: REQUERIMIENTO SONIC2
         4: AGENDAR SONIC2 LUNES
         5: REQUERIMIENTO SHERLOCK_THE_ABOMINABLE_BRIDGE
-        6: REQUERIMIENTO SHERLOCK_A_SUDY_IN_PINK
+        6: REQUERIMIENTO SHERLOCK_A_STUDY_IN_PINK
         7: REQUERIMIENTO SHERLOCK_THE_BLIND_BANKER
         8: REQUERIMIENTO SHERLOCK_THE_GREAT_GAME
-        9: AGENDAR SHERLOCK_A_SUDY_IN_PINK LUNES
-       10: AGENDAR SHERLOCK_THE_BLIND_BANKER LUNES
-       11: AGENDAR SHERLOCK_THE_GREAT_GAME LUNES
-       12: AGENDAR SONIC3 LUNES
-       13: AGENDAR LOS_JUEGOS_DEL_HAMBRE_SINSAJO_PARTE_1 MARTES
-       14: AGENDAR LOS_JUEGOS_DEL_HAMBRE_SINSAJO_PARTE_2 MARTES
-       15: AGENDAR SHERLOCK_THE_ABOMINABLE_BRIDGE MARTES
+        9: AGENDAR SHERLOCK_A_STUDY_IN_PINK LUNES
+       10: AGENDAR SHERLOCK_THE_BLIND_BANKER MARTES
+       11: AGENDAR SHERLOCK_THE_GREAT_GAME MIERCOLES
+       12: AGENDAR SONIC3 MARTES
+       13: AGENDAR LOS_JUEGOS_DEL_HAMBRE_SINSAJO_PARTE_1 MIERCOLES
+       14: AGENDAR LOS_JUEGOS_DEL_HAMBRE_SINSAJO_PARTE_2 JUEVES
+       15: AGENDAR SHERLOCK_THE_ABOMINABLE_BRIDGE JUEVES
        16: REACH-GOAL
      
 
-time spent:    0.00 seconds instantiating 0 easy, 174 hard action templates
-               0.00 seconds reachability analysis, yielding 95 facts and 418 actions
-               0.00 seconds creating final representation with 81 relevant facts, 8 relevant fluents
+time spent:    0.00 seconds instantiating 0 easy, 94 hard action templates
+               0.00 seconds reachability analysis, yielding 87 facts and 85 actions
+               0.00 seconds creating final representation with 65 relevant facts, 8 relevant fluents
                0.00 seconds computing LNF
                0.00 seconds building connectivity graph
                0.00 seconds searching, evaluating 18 states, to a max depth of 1

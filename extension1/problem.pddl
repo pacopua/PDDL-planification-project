@@ -6,7 +6,7 @@
 
         Los_juegos_del_hambre Los_juegos_del_hambre_En_llamas Los_juegos_del_hambre_Sinsajo_parte_1 Los_juegos_del_hambre_Sinsajo_parte_2 - contenido
 
-        Sherlock_A_sudy_in_pink Sherlock_The_blind_banker Sherlock_The_great_game - contenido
+        Sherlock_A_study_in_pink Sherlock_The_blind_banker Sherlock_The_great_game - contenido
         Sherlock_The_abominable_bridge - contenido
 
         lunes martes miercoles jueves - dia
@@ -31,10 +31,10 @@
         (predecesor Los_juegos_del_hambre_En_llamas Los_juegos_del_hambre_Sinsajo_parte_1)
         (predecesor Los_juegos_del_hambre_Sinsajo_parte_1 Los_juegos_del_hambre_Sinsajo_parte_2)
 
-        (predecesor Sherlock_A_sudy_in_pink Sherlock_The_blind_banker)
+        (predecesor Sherlock_A_study_in_pink Sherlock_The_blind_banker)
         (predecesor Sherlock_The_blind_banker Sherlock_The_great_game)
 
-        (predecesor Sherlock_A_sudy_in_pink Sherlock_The_abominable_bridge)
+        (predecesor Sherlock_A_study_in_pink Sherlock_The_abominable_bridge)
         (predecesor Sherlock_The_blind_banker Sherlock_The_abominable_bridge)
         (predecesor Sherlock_The_great_game Sherlock_The_abominable_bridge)
         
@@ -49,7 +49,7 @@
         (= (orden miercoles) 3)
         (= (orden jueves) 4)
 
-        (= (maxContenidosPorDia) 5)
+        (= (maxContenidosPorDia) 2)
 
     )
     (:goal
