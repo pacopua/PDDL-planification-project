@@ -1,4 +1,4 @@
-package problem_generator;
+package nivel_basico;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -103,7 +103,7 @@ public class problem_generator {
         }
         //Pair<Integer, Integer> dia = new Pair<>(minDias, maxDias);
         //Pair<Integer, Integer> contenido = new Pair<>(minContenidos, maxContenidos);
-        generarPDDL("nivel-basico/random_problem1.pddl", minDias, maxDias, minContenidos, maxContenidos);
+        generarPDDL("nivel_basico/random_problem1.pddl", minDias, maxDias, minContenidos, maxContenidos);
     }
 
     public static void
@@ -162,7 +162,7 @@ public class problem_generator {
                 //"(= (contenidosAgendados lunes) 0)"
                 //file.write("        (not (lleno " + day + "))\n");
             }
-            file.write("        (= (maxContenidosPorDia) 1)\n");
+            file.write("        (= (maxContenidosPorDia) 9999)\n");
             file.write("        )\n");
             /*
                 (:goal
