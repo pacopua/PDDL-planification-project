@@ -1,0 +1,56 @@
+
+ff: parsing domain file
+domain 'DOMAIN_EXTENSION1' defined
+ ... done.
+ff: parsing problem file
+problem 'PROBLEMA_EXTENSION1' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   13 into depth [1]
+                                  12            [1]
+                                  11            [1]
+                                  10            [1]
+                                   9            [1]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1]
+                                   4            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: REQUERIMIENTO BLACK_PANTHER
+        1: REQUERIMIENTO ARROW_S06E08
+        2: REQUERIMIENTO ARROW_S06E07
+        3: REQUERIMIENTO THE_FLASH_S04E08
+        4: REQUERIMIENTO SUPERGIRL_S03E08
+        5: REQUERIMIENTO LEGENDS_OF_TOMORROW_S03E08
+        6: AGENDAR ARROW_S06E07 VIERNES
+        7: AGENDAR THE_FLASH_S04E08 DOMINGO
+        8: AGENDAR SUPERGIRL_S03E08 DOMINGO
+        9: AGENDAR LEGENDS_OF_TOMORROW_S03E08 SABADO
+       10: AGENDAR BLACK_PANTHER VIERNES
+       11: AGENDAR ARROW_S06E08 SABADO
+       12: REACH-GOAL
+     
+
+time spent:    0.03 seconds instantiating 0 easy, 3578 hard action templates
+               0.00 seconds reachability analysis, yielding 55 facts and 3489 actions
+               0.00 seconds creating final representation with 47 relevant facts, 6 relevant fluents
+               0.01 seconds computing LNF
+               0.01 seconds building connectivity graph
+               0.00 seconds searching, evaluating 14 states, to a max depth of 1
+               0.05 seconds total time
+
