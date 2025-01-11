@@ -1,4 +1,4 @@
-(define (domain DOMAIN_EXTENSION1)
+(define (domain DOMAIN_EXTENSION3)
     (:requirements :typing :adl :fluents)
     (:types
         contenido dia - object
@@ -53,7 +53,7 @@
         :precondition 
             (and
                 (necesarioAgendar ?c)
-                (<=
+                (<
                     (contenidosAgendados ?d)
                     3
                 )

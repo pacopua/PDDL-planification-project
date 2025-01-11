@@ -319,7 +319,7 @@ public class generador_problema {
         }
         //Pair<Integer, Integer> dia = new Pair<>(minDias, maxDias);
         //Pair<Integer, Integer> contenido = new Pair<>(minContenidos, maxContenidos);
-        generarPDDL("extension2/random_problem1.pddl", minDias, maxDias, minContenidos, maxContenidos);
+        generarPDDL("extension3/random_problem1.pddl", minDias, maxDias, minContenidos, maxContenidos);
     }
 
     public static void
@@ -341,8 +341,8 @@ public class generador_problema {
         List<String> days = generateRandomStrings(numDays, "Day");
 
         try (FileWriter file = new FileWriter(filename)) {
-            file.write("(define (problem PROBLEMA_NIVELBASICO)\n");
-            file.write("    (:domain DOMAIN_EXTENSION2)\n");
+            file.write("(define (problem PROBLEMA_EXTENSION3)\n");
+            file.write("    (:domain DOMAIN_EXTENSION3)\n");
             file.write("    (:objects\n");
             for (String content : contents) {
                 file.write("        " + content + " - contenido\n");
@@ -372,7 +372,7 @@ public class generador_problema {
                 for (int j = i + 1; j < numContents; j++) {
                     // 0.0 <= random_float < 1.0
                     float random_float = random.nextFloat( (float) 1.0);
-                    if (random_float > 0.75) { // 25% de probabilidad de que haya un predecesor
+                    if (random_float > 0.90) { // 25% de probabilidad de que haya un predecesor
                         file.write("        (predecesor " + contents.get(i) + " " + contents.get(j) + ")\n");
                         predecesor_de[i][j] = true;
                     }
@@ -390,7 +390,7 @@ public class generador_problema {
                 for (int j = i + 1; j < numContents; j++) {
                     // 0.0 <= random_float < 1.0
                     float random_float = random.nextFloat( (float) 1.0);
-                    if (random_float > 0.75 && !paralelos[i][j] && !predecesor_de[i][j]) {
+                    if (random_float > 0.90 && !paralelos[i][j] && !predecesor_de[i][j]) {
                     /* 25% de probabilidad de que haya un paralelo, ademas
                     no pueden ser predecesores para no mezclar */
                         paralelos[i][j] = true;
@@ -416,8 +416,8 @@ public class generador_problema {
             //contenidosPorDia += random.nextInt(2);
             //antes le sumabamos uno en caso de que no fuese divisible
             //ahora le sumamos uno siempre porque los paralelos limitan aún mas al planificador
-            file.write("        (= (maxContenidosPorDia) 3)\n");
-            file.write("        )\n");
+            //file.write("        (= (maxContenidosPorDia) 3)\n");
+            //file.write("        )\n");
             /*
                 (:goal
                     (forall (?c - contenido)
@@ -430,7 +430,7 @@ public class generador_problema {
         )
     )
              */
-
+            file.write("    )\n");
             file.write("    (:goal\n");
             file.write("    (forall (?c - contenido)\n");
             file.write("        (imply\n");
