@@ -1,0 +1,44 @@
+
+ff: parsing domain file
+domain 'DOMAIN_NIVELBASICO' defined
+ ... done.
+ff: parsing problem file
+problem 'PROBLEMA_NIVELBASICO' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:    7 into depth [1]
+                                   6            [1]
+                                   5            [1]
+                                   4            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: REQUERIMIENTO CONTENT5
+        1: REQUERIMIENTO CONTENT2
+        2: REQUERIMIENTO CONTENT1
+        3: AGENDAR CONTENT1 DAY1
+        4: AGENDAR CONTENT2 DAY2
+        5: AGENDAR CONTENT5 DAY3
+        6: REACH-GOAL
+     
+
+time spent:    0.00 seconds instantiating 0 easy, 33 hard action templates
+               0.00 seconds reachability analysis, yielding 47 facts and 43 actions
+               0.00 seconds creating final representation with 35 relevant facts, 10 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 8 states, to a max depth of 1
+               0.00 seconds total time
+

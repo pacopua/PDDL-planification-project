@@ -162,7 +162,8 @@ public class problem_generator {
                 //"(= (contenidosAgendados lunes) 0)"
                 //file.write("        (not (lleno " + day + "))\n");
             }
-            file.write("        (= (maxContenidosPorDia) 9999)\n");
+            int contenido_por_dia = numContents/numDays + (numContents%numDays != 0 ? 1 : 0);
+            file.write("        (= (maxContenidosPorDia)" + contenido_por_dia + ")\n");
             file.write("        )\n");
             /*
                 (:goal
