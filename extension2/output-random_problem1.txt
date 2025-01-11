@@ -1,0 +1,70 @@
+
+ff: parsing domain file
+domain 'DOMAIN_EXTENSION1' defined
+ ... done.
+ff: parsing problem file
+problem 'PROBLEMA_NIVELBASICO' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   14 into depth [1]
+                                  13            [1]
+                                  12            [1]
+                                  11            [1]
+                                  10            [1]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1] --- pruning stopped --- [1]
+
+Enforced Hill-climbing failed !
+switching to Best-first Search now.
+
+
+advancing to distance:   14
+                         13
+                         12
+                         11
+                         10
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: REQUERIMIENTO CONTENT6
+        1: REQUERIMIENTO CONTENT2
+        2: AGENDAR CONTENT2 DAY1
+        3: REQUERIMIENTO CONTENT3
+        4: AGENDAR CONTENT3 DAY2
+        5: REQUERIMIENTO CONTENT5
+        6: REQUERIMIENTO CONTENT4
+        7: AGENDAR CONTENT4 DAY1
+        8: REQUERIMIENTO CONTENT1
+        9: AGENDAR CONTENT1 DAY1
+       10: AGENDAR CONTENT5 DAY2
+       11: AGENDAR CONTENT6 DAY2
+       12: REACH-GOAL
+     
+
+time spent:    0.00 seconds instantiating 0 easy, 1413 hard action templates
+               0.00 seconds reachability analysis, yielding 46 facts and 938 actions
+               0.00 seconds creating final representation with 45 relevant facts, 6 relevant fluents
+               0.01 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 84 states, to a max depth of 1
+               0.01 seconds total time
+

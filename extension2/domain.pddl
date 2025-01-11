@@ -1,4 +1,4 @@
-(define (domain DOMAIN_EXTENSION1)
+(define (domain DOMAIN_EXTENSION2)
     (:requirements :typing :adl :fluents)
     (:types
         contenido dia - object

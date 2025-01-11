@@ -1,0 +1,76 @@
+ff: parsing domain file
+domain 'DOMAIN_EXTENSION1' defined
+ ... done.
+ff: parsing problem file
+problem 'PROBLEMA_NIVELBASICO' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   15 into depth [1]
+                                  14            [1]
+                                  13            [1]
+                                  12            [1]
+                                  11            [1]
+                                  10            [1]
+                                   9            [1]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1] --- pruning stopped --- [1]
+                                   4            [1] --- pruning stopped --- [1]
+
+Enforced Hill-climbing failed !
+switching to Best-first Search now.
+
+
+advancing to distance:   15
+                         14
+                         13
+                         12
+                         11
+                         10
+                          9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: REQUERIMIENTO CONTENT7
+        1: REQUERIMIENTO CONTENT6
+        2: AGENDAR CONTENT6 DAY3
+        3: REQUERIMIENTO CONTENT5
+        4: REQUERIMIENTO CONTENT1
+        5: AGENDAR CONTENT1 DAY1
+        6: AGENDAR CONTENT5 DAY2
+        7: AGENDAR CONTENT7 DAY3
+        8: REQUERIMIENTO CONTENT4
+        9: REQUERIMIENTO CONTENT3
+       10: AGENDAR CONTENT3 DAY4
+       11: REQUERIMIENTO CONTENT2
+       12: AGENDAR CONTENT2 DAY1
+       13: AGENDAR CONTENT4 DAY2
+       14: REACH-GOAL
+     
+
+time spent:    0.02 seconds instantiating 0 easy, 558 hard action templates
+               0.00 seconds reachability analysis, yielding 80 facts and 1663 actions
+               0.01 seconds creating final representation with 77 relevant facts, 10 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.03 seconds searching, evaluating 735 states, to a max depth of 1
+               0.06 seconds total time
+
