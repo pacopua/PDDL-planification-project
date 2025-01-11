@@ -1,5 +1,5 @@
-(define (problem PROBLEMA_EXTENSION1)
-    (:domain DOMAIN_EXTENSION1)
+(define (problem PROBLEMA_EXTENSION2)
+    (:domain DOMAIN_EXTENSION2)
     (:objects
         Thor_Ragnarok Black_Panther - contenido
 

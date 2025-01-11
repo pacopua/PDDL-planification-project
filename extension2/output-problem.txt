@@ -1,9 +1,9 @@
 
 ff: parsing domain file
-domain 'DOMAIN_EXTENSION1' defined
+domain 'DOMAIN_EXTENSION2' defined
  ... done.
 ff: parsing problem file
-problem 'PROBLEMA_EXTENSION1' defined
+problem 'PROBLEMA_EXTENSION2' defined
  ... done.
 
 
@@ -46,8 +46,8 @@ step    0: REQUERIMIENTO BLACK_PANTHER
        12: REACH-GOAL
      
 
-time spent:    0.03 seconds instantiating 0 easy, 3578 hard action templates
-               0.00 seconds reachability analysis, yielding 55 facts and 3489 actions
+time spent:    0.02 seconds instantiating 0 easy, 3578 hard action templates
+               0.01 seconds reachability analysis, yielding 55 facts and 3489 actions
                0.00 seconds creating final representation with 47 relevant facts, 6 relevant fluents
                0.01 seconds computing LNF
                0.01 seconds building connectivity graph
