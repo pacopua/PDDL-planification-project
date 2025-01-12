@@ -1,9 +1,9 @@
 
 ff: parsing domain file
-domain 'DOMAIN_EXTENSION1' defined
+domain 'DOMAIN_EXTENSION3' defined
  ... done.
 ff: parsing problem file
-problem 'PROBLEMA_EXTENSION1' defined
+problem 'PROBLEMA_EXTENSION3' defined
  ... done.
 
 

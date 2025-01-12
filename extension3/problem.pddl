@@ -1,5 +1,5 @@
-(define (problem PROBLEMA_EXTENSION1)
-    (:domain DOMAIN_EXTENSION1)
+(define (problem PROBLEMA_EXTENSION3)
+    (:domain DOMAIN_EXTENSION3)
     (:objects
 
         Dune1 Dune2 - contenido
