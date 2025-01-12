@@ -1,0 +1,64 @@
+
+ff: parsing domain file
+domain 'DOMAIN_EXTENSION3' defined
+ ... done.
+ff: parsing problem file
+problem 'PROBLEMA_EXTENSION3' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   19 into depth [1]
+                                  18            [1]
+                                  17            [1]
+                                  16            [1]
+                                  15            [1]
+                                  14            [1]
+                                  13            [1]
+                                  11            [1]
+                                   9            [1]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1]
+                                   4            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: REQUERIMIENTO DUNE2
+        1: REQUERIMIENTO DUNE1
+        2: AGENDAR DUNE1 VIERNES
+        3: REQUERIMIENTO CHICAGO_PD_S07E04
+        4: REQUERIMIENTO CHICAGO_FIRE_S08E04
+        5: REQUERIMIENTO CHICAGO_MED_S05E04
+        6: AGENDAR CHICAGO_FIRE_S08E04 VIERNES
+        7: AGENDAR CHICAGO_MED_S05E04 SABADO
+        8: REQUERIMIENTO CHICAGO_PD_S07E05
+        9: REQUERIMIENTO CHICAGO_FIRE_S08E05
+       10: REQUERIMIENTO CHICAGO_MED_S05E05
+       11: AGENDAR CHICAGO_FIRE_S08E05 DOMINGO
+       12: AGENDAR CHICAGO_MED_S05E05 DOMINGO
+       13: AGENDAR DUNE2 SABADO
+       14: AGENDAR CHICAGO_PD_S07E04 VIERNES
+       15: AGENDAR CHICAGO_PD_S07E05 SABADO
+       16: REACH-GOAL
+     
+
+time spent:    0.00 seconds instantiating 0 easy, 768 hard action templates
+               0.00 seconds reachability analysis, yielding 60 facts and 568 actions
+               0.00 seconds creating final representation with 57 relevant facts, 6 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 20 states, to a max depth of 1
+               0.00 seconds total time
+
