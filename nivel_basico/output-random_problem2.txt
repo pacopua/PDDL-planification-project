@@ -1,8 +1,4 @@
 ff: parsing domain file
-domain 'DOMAIN_EXTENSION1' defined
- ... done.
-ff: parsing problem file
-ff: parsing domain file
 domain 'DOMAIN_NIVELBASICO' defined
  ... done.
 ff: parsing problem file
