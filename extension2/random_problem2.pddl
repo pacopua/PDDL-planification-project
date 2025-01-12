@@ -1,4 +1,4 @@
-(define (problem PROBLEMA_NIVELBASICO)
+(define (problem PROBLEMA_EXTENSION2)
     (:domain DOMAIN_EXTENSION2)
     (:objects
         Content1 - contenido

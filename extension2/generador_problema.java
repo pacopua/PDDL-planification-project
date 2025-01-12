@@ -341,7 +341,7 @@ public class generador_problema {
         List<String> days = generateRandomStrings(numDays, "Day");
 
         try (FileWriter file = new FileWriter(filename)) {
-            file.write("(define (problem PROBLEMA_NIVELBASICO)\n");
+            file.write("(define (problem PROBLEMA_EXTENSION2)\n");
             file.write("    (:domain DOMAIN_EXTENSION2)\n");
             file.write("    (:objects\n");
             for (String content : contents) {
