@@ -1,2 +1,1 @@
-Práctica 3 de la asignatura Inteligencia Artificial de Ingeniería Informática de la FIB, UPC.
-Curso 2024-2025 Q1
+Esta es la primera iteración de la práctica. Se nos pide encontrar un plan de visionado donde los contenidos tienen como mucho un predecesor y no tienen contenidos paralelos.
