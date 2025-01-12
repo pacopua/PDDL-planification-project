@@ -7,17 +7,6 @@ problem 'PROBLEMA_EXTENSION3' defined
  ... done.
 
 
-ff: goal can be simplified to FALSE. No plan will solve it
-
-
-ff: parsing domain file
-domain 'DOMAIN_EXTENSION3' defined
- ... done.
-ff: parsing problem file
-problem 'PROBLEMA_EXTENSION3' defined
- ... done.
-
-
 no metric specified. plan length assumed.
 
 checking for cyclic := effects --- OK.
